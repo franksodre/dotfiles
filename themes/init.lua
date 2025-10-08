@@ -1,0 +1,6 @@
+require("themes.ayu-colorscheme")
+require("themes.catppuccin")
+require("themes.rose-pine")
+require("themes.vague")
+require("themes.vesper-colorscheme")
+require("themes.colors")
