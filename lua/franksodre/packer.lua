@@ -1,105 +1,150 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- Bootstrap packer if not installed
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
 
--- Only required if you have packer configured as `opt`
-vim.cmd([[packadd packer.nvim]])
+local packer_bootstrap = ensure_packer()
 
-return require("packer").startup(function(use)
-  -- Packer can manage itself
-  use("wbthomason/packer.nvim")
+return require('packer').startup(function(use)
+  -- Package manager
+  use 'wbthomason/packer.nvim'
+
+  -- LSP & Completion
+  use {
+    'neovim/nvim-lspconfig',
+  }
+  -- coc
+  use  {
+    'neoclide/coc.nvim',
+    branch = 'release'
+  }
+  -- use { "RedsXDD/neopywal.nvim", as = "neopywal" }
+  -- use {
+  --   'hrsh7th/nvim-cmp',
+  --   requires = {
+  --     'hrsh7th/cmp-nvim-lsp',
+  --     'hrsh7th/cmp-path',
+  --     'L3MON4D3/LuaSnip',
+  --   }
+  -- }
+  use {
+    'nvimtools/none-ls.nvim',
+    requires = { 'nvimtools/none-ls-extras.nvim' }
+  }
+
+  -- oil.nvim
   use({
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
-    -- or                            , branch = '0.1.x',
-    requires = { { "nvim-lua/plenary.nvim" } },
-  })
-  -- lua/plugins/rose-pine.lua
-  use({
-    "rose-pine/neovim",
-    name = "rose-pine",
+    "stevearc/oil.nvim",
     config = function()
-      -- vim.cmd("colorscheme rose-pine-main")
+      require("oil").setup()
     end,
   })
-  use({
-    "vague2k/vague.nvim",
+
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    branch = "master",
+    build = ":TSUpdate",
+  }
+
+  -- Fuzzy Finder
+  use {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
+
+  -- Navigation & Editing
+  use 'ThePrimeagen/harpoon'
+  use 'mbbill/undotree'
+  use 'airblade/vim-rooter'
+  use {
+    'windwp/nvim-autopairs',
     config = function()
-      vim.cmd("colorscheme vague")
+      require('nvim-autopairs').setup{}
     end
-  })
-
-  use({
-    "metalelf0/base16-black-metal-scheme",
+  }
+  use {
+    'numToStr/Comment.nvim',
     config = function()
-      -- vim.cmd("colorscheme base16-black-metal-bathory")
-      -- avaiable theme tastes
-      -- Bathory: Hammerheart
-      -- Burzum: Filosofem
-      -- Dark Funeral: The secrets of the black arts
-      -- Gorgoroth: Twilight of the idols
-      -- Immortal: At the heart of winter
-      -- Khold: Phantom
-      -- Marduk: Panzer Division Marduk
-      -- Mayhem: Dawn of the black hearts
-      -- Nile: Black seeds of vengeance
-      -- Venom: Welcome to hell
+      require('Comment').setup()
+    end
+  }
 
-    end,
-    priority = 1000
-  })
+  -- Git
+  use 'tpope/vim-fugitive'
 
-  use({
-    "romanaverin/charleston.nvim"
-  })
-
-  use({
-    "folke/tokyonight.nvim"
-  })
-  -- kanagawa theme
-  use ("rebelot/kanagawa.nvim")
-
-	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
-	use("ThePrimeagen/harpoon")
-	use("mbbill/undotree")
-	use("tpope/vim-fugitive")
-	use({
-		"mason-org/mason.nvim",
-		"mason-org/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-	})
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use("datsfilipe/vesper.nvim")
-	use("ayu-theme/ayu-vim")
-	use({ "L3MON4D3/LuaSnip" })
-
-  use("hrsh7th/nvim-cmp")
-  use("hrsh7th/cmp-path")
-  use("hrsh7th/cmp-nvim-lsp")
-
-  use("nvimtools/none-ls.nvim")
-  use("nvimtools/none-ls-extras.nvim")
-  --
-  -- lua line
+  -- UI & Themes
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    requires = { 'nvim-tree/nvim-web-devicons' }
+  }
+  
+  -- Colorschemes
+  use {
+    'catppuccin/nvim',
+    as = 'catppuccin',
+    -- config = function()
+    --   vim.cmd.colorscheme('catppuccin-mocha')
+    -- end
+  }
+  -- themes
+  use 'rose-pine/neovim'
+  use 'folke/tokyonight.nvim'
+  use 'rebelot/kanagawa.nvim'
+  use 'vague2k/vague.nvim'
+  use {
+   'metalelf0/base16-black-metal-scheme',
+   as = 'base16',
+   config = function()
+     vim.cmd.colorscheme('base16-black-metal-immortal')
+   end
+  }
+  use 'stevedylandev/darkmatter-nvim'
+  use 'romanaverin/charleston.nvim'
+  use 'ayu-theme/ayu-vim'
+  use 'datsfilipe/vesper.nvim'
+
+  -- Lua development
+  use {
+    'folke/lazydev.nvim',
+    ft = 'lua'
   }
 
+  -- Mini modules
   use {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-  }
-  -- comment strings
-  use("numToStr/Comment.nvim")
-
-  -- VimBeGood
-  use ("ThePrimeagen/vim-be-good")
-  --
-  -- nvim auto-pairs
-  use {
-    "windwp/nvim-autopairs",
-  }
-  use ({
     'echasnovski/mini.nvim',
-  })
+    config = function()
+      -- Mini.pick - Fuzzy picker
+      require('mini.pick').setup()
+      
+      -- Mini.surround - Surround actions
+      require('mini.surround').setup({
+        mappings = {
+          add = 'sa',            -- Add surrounding in Normal and Visual modes
+          delete = 'sd',         -- Delete surrounding
+          find = 'sf',           -- Find surrounding (to the right)
+          find_left = 'sF',      -- Find surrounding (to the left)
+          highlight = 'sh',      -- Highlight surrounding
+          replace = 'sr',        -- Replace surrounding
+          update_n_lines = 'sn', -- Update `n_lines`
+        },
+      })
+    end
+  }
 
+  -- Fun
+  use 'ThePrimeagen/vim-be-good'
+
+  -- Automatically set up configuration after cloning packer.nvim
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)

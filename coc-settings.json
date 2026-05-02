@@ -1,0 +1,15 @@
+{
+  "languageserver": {
+    "v": {
+      "command": "v-analyzer",
+      "rootPatterns": ["v.mod", ".git"],
+      "trace.server": "verbose",
+      "filetypes": ["v", "vlang"],
+    },
+  },
+
+  "semanticTokens.enable": true,
+  "inlayHint.enable": false,
+  "hover.target": "float",
+  "fileSystemWatch.enable": false,
+}

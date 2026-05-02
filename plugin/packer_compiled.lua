@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/franksodre/.cache/nvim/packer_hererocks/2.1.1737090214/share/lua/5.1/?.lua;/home/franksodre/.cache/nvim/packer_hererocks/2.1.1737090214/share/lua/5.1/?/init.lua;/home/franksodre/.cache/nvim/packer_hererocks/2.1.1737090214/lib/luarocks/rocks-5.1/?.lua;/home/franksodre/.cache/nvim/packer_hererocks/2.1.1737090214/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/franksodre/.cache/nvim/packer_hererocks/2.1.1737090214/lib/lua/5.1/?.so"
+local package_path_str = "/home/franksodre/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?.lua;/home/franksodre/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?/init.lua;/home/franksodre/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?.lua;/home/franksodre/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/franksodre/.cache/nvim/packer_hererocks/2.1.1741730670/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -75,24 +75,20 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0" },
     loaded = true,
     path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
-  },
-  LuaSnip = {
-    loaded = true,
-    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/LuaSnip",
-    url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["ayu-vim"] = {
     loaded = true,
     path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/ayu-vim",
     url = "https://github.com/ayu-theme/ayu-vim"
   },
-  ["base16-black-metal-scheme"] = {
-    config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
+  base16 = {
+    config = { "\27LJ\2\nO\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0 base16-black-metal-immortal\16colorscheme\bcmd\bvim\0" },
     loaded = true,
-    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/base16-black-metal-scheme",
+    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/base16",
     url = "https://github.com/metalelf0/base16-black-metal-scheme"
   },
   catppuccin = {
@@ -105,15 +101,15 @@ _G.packer_plugins = {
     path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/charleston.nvim",
     url = "https://github.com/romanaverin/charleston.nvim"
   },
-  ["cmp-nvim-lsp"] = {
+  ["coc.nvim"] = {
     loaded = true,
-    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
-    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
   },
-  ["cmp-path"] = {
+  ["darkmatter-nvim"] = {
     loaded = true,
-    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/cmp-path",
-    url = "https://github.com/hrsh7th/cmp-path"
+    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/darkmatter-nvim",
+    url = "https://github.com/stevedylandev/darkmatter-nvim"
   },
   harpoon = {
     loaded = true,
@@ -137,23 +133,13 @@ _G.packer_plugins = {
     path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["mason-lspconfig.nvim"] = {
-    loaded = true,
-    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
-    url = "https://github.com/mason-org/mason-lspconfig.nvim"
-  },
-  ["mason.nvim"] = {
-    loaded = true,
-    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/mason.nvim",
-    url = "https://github.com/mason-org/mason.nvim"
-  },
   ["mini.nvim"] = {
+    config = { "\27LJ\2\nÎ\1\0\0\4\0\a\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\2\0005\2\5\0005\3\4\0=\3\6\2B\0\2\1K\0\1\0\rmappings\1\0\1\rmappings\0\1\0\a\vdelete\asd\14find_left\asF\14highlight\ash\tfind\asf\freplace\asr\badd\asa\19update_n_lines\asn\18mini.surround\nsetup\14mini.pick\frequire\0" },
     loaded = true,
     path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/mini.nvim",
     url = "https://github.com/echasnovski/mini.nvim"
   },
   neovim = {
-    config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
     loaded = true,
     path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/neovim",
     url = "https://github.com/rose-pine/neovim"
@@ -169,14 +155,10 @@ _G.packer_plugins = {
     url = "https://github.com/nvimtools/none-ls.nvim"
   },
   ["nvim-autopairs"] = {
+    config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
     loaded = true,
     path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
-  },
-  ["nvim-cmp"] = {
-    loaded = true,
-    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/nvim-cmp",
-    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -189,10 +171,15 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/franksodre/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    loaded = true,
+    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
+  ["oil.nvim"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\boil\frequire\0" },
+    loaded = true,
+    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/oil.nvim",
+    url = "https://github.com/stevearc/oil.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -220,7 +207,6 @@ _G.packer_plugins = {
     url = "https://github.com/mbbill/undotree"
   },
   ["vague.nvim"] = {
-    config = { "\27LJ\2\n5\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\22colorscheme vague\bcmd\bvim\0" },
     loaded = true,
     path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/vague.nvim",
     url = "https://github.com/vague2k/vague.nvim"
@@ -239,22 +225,35 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-rooter"] = {
+    loaded = true,
+    path = "/home/franksodre/.local/share/nvim/site/pack/packer/start/vim-rooter",
+    url = "https://github.com/airblade/vim-rooter"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vague.nvim
-time([[Config for vague.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\22colorscheme vague\bcmd\bvim\0", "config", "vague.nvim")
-time([[Config for vague.nvim]], false)
--- Config for: neovim
-time([[Config for neovim]], true)
-try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "neovim")
-time([[Config for neovim]], false)
--- Config for: base16-black-metal-scheme
-time([[Config for base16-black-metal-scheme]], true)
-try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "base16-black-metal-scheme")
-time([[Config for base16-black-metal-scheme]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
+-- Config for: mini.nvim
+time([[Config for mini.nvim]], true)
+try_loadstring("\27LJ\2\nÎ\1\0\0\4\0\a\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\2\0005\2\5\0005\3\4\0=\3\6\2B\0\2\1K\0\1\0\rmappings\1\0\1\rmappings\0\1\0\a\vdelete\asd\14find_left\asF\14highlight\ash\tfind\asf\freplace\asr\badd\asa\19update_n_lines\asn\18mini.surround\nsetup\14mini.pick\frequire\0", "config", "mini.nvim")
+time([[Config for mini.nvim]], false)
+-- Config for: oil.nvim
+time([[Config for oil.nvim]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\boil\frequire\0", "config", "oil.nvim")
+time([[Config for oil.nvim]], false)
+-- Config for: base16
+time([[Config for base16]], true)
+try_loadstring("\27LJ\2\nO\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0 base16-black-metal-immortal\16colorscheme\bcmd\bvim\0", "config", "base16")
+time([[Config for base16]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads

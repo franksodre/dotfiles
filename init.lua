@@ -7,19 +7,9 @@ vim.g.skip_ts_context_commentstring_module = true
   }
 }
 
-vim.lsp.config('*', {
-  capabilities = {
-    textDocument = {
-      semanticTokens = {
-        multilineTokenSupport = true,
-      }
-    }
-  },
-  root_markers = { '.git' },
-})
-
 vim.lsp.config('lua', {
-  filetypes = {'lua'}
+  -- cmd = { 'lua-language-server' },
+  filetypes = {'lua'},
 })
 
 vim.lsp.config('golang', {
@@ -42,13 +32,17 @@ vim.lsp.config('clangd', {
   filetypes = {'c'}
 })
 
-vim.lsp.config('vlang', {
-  filetypes = {'v'}
-})
+-- vim.lsp.config('vlang', {
+--   filetypes = {'v'}
+-- })
+
 vim.lsp.config('typescript', {
-  filetypes = {'ts', 'tsx', 'jsx', 'js'}
+  filetypes = {'ts', 'js'}
+})
+
+vim.lsp.config('emmet-language-server', {
+  filetypes = {'html', 'css'}
 })
 
 require("franksodre")
 -- require("themes")
-

@@ -3,6 +3,9 @@ require("franksodre.set")
 require("franksodre.yank_highlight")
 require("franksodre.rename_nvim")
 
+-- vim.opt.termguicolors = false
+vim.o.background = "dark" -- or "light" depending on your theme
+
 vim.o.updatetime = 250
 
 vim.api.nvim_create_autocmd("CursorHold", {

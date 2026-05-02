@@ -4,7 +4,7 @@ require('mini.surround').setup({
   custom_surroundings = nil,
 
   -- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
-  highlight_duration = 500,
+  -- highlight_duration = 500,
 
   -- Module mappings. Use `''` (empty string) to disable one.
   mappings = {
@@ -37,5 +37,5 @@ require('mini.surround').setup({
   -- Whether to disable showing non-error feedback
   -- This also affects (purely informational) helper messages shown after
   -- idle time if user input is required.
-  silent = false,
+  silent = true,
 })
